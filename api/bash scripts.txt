@@ -1,0 +1,11 @@
+ curl -d "client_id=675a523b2794c0c0c0a4&client_secret=cb0a885da9f6f98072c82a5abb0665c4028fd20c&grant_type=password&username=vestium&password=test&scope=write" http://localhost:8000/oauth2/access_token
+
+ curl --dump-header - -H  "Authorization: 0Auth 02a59a87dd0a6838174702933582c0c9cb5eeec0"  "Content-Type: application/json" -X POST --data '{"email" : "craigmichaelpullar@gmail.com", "username" : "craigpullar", "first_name" : "Craig", "last_name" : "Pullar", "password" : "shgdighs","beta_enabled" : "True","commission_rate" : 7,"beta_code" : "jksghud"}' api.vestiumapp.com:8000/api/v1/user/
+
+ from provider.oauth2.models import Client
+ from django.contrib.auth.models import User
+ u = User.objects.get(id=1)
+ c = Client(user=u, name="mysite client", client_type=1, url="http://ianalexandr.com")
+ c.save()
+
+ from provider.oauth2.models import AccessToken
